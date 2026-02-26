@@ -19,6 +19,3 @@ copyright = "2026, NosStudio"
 section = "net"
 priority = "optional"
 depends = "$auto"
-
-[package.metadata.deb.systemd-units]
-nos-core = { enable = true}
