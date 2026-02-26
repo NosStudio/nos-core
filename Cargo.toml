@@ -1,6 +1,6 @@
 [package]
 name = "nos-core"
-version = "0.1.0"
+version = "0.1.3-alpha"
 edition = "2024"
 authors = ["NosStudio <enzo.hautenauven09@hotmail.com>"]
 description = "The high-performance Rust control plane and eBPF data plane for NosStudio. Manages routing, BGP, firewalling, and Anti-DDoS mitigation."
