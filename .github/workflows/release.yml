@@ -9,21 +9,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout du code
+      - name: Checkout of the code
         uses: actions/checkout@v4
 
-      - name: Installation de Rust
+      - name: Installation of Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Installation de cargo-deb
+      - name: Installation of cargo-deb
         run: cargo install cargo-deb
 
-      - name: Compilation et Création du paquet .deb
+      - name: Compilation and creation of the package .deb
         run: |
           cargo build --release
           cargo deb --no-build
 
-      - name: Publication sur GitHub Releases
+      - name: Publication on GitHub Releases
         uses: softprops/action-gh-release@v2
         with:
           files: target/debian/*.deb
