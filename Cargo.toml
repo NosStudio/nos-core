@@ -1,0 +1,24 @@
+[package]
+name = "nos-core"
+version = "0.1.0"
+edition = "2024"
+authors = ["NosStudio <enzo.hautenauven09@hotmail.com>"]
+description = "The high-performance Rust control plane and eBPF data plane for NosStudio. Manages routing, BGP, firewalling, and Anti-DDoS mitigation."
+
+[dependencies]
+tokio = { version = "1.49.0", features = ["full"] }
+axum = "0.8.8"
+serde = {version =  "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+tracing = "0.1.44"
+tracing-subscriber = "0.3.22"
+
+[package.metadata.deb]
+maintainer = "NosStudio <enzo.hautenauven09@hotmail.com>"
+copyright = "2026, NosStudio"
+section = "net"
+priority = "optional"
+depends = "$auto"
+
+[package.metadata.deb.systemd-units]
+nos-core = { enable = true}

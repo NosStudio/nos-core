@@ -1,0 +1,31 @@
+name: Build and Release nos-core (.deb)
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Installation de Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Installation de cargo-deb
+        run: cargo install cargo-deb
+
+      - name: Compilation et Création du paquet .deb
+        run: |
+          cargo build --release
+          cargo deb --no-build
+
+      - name: Publication sur GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          files: target/debian/*.deb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
